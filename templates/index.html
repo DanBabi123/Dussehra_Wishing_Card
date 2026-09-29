@@ -4,25 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Festive Wishes | Vijayadashami Dussehra Greeting Card Generator</title>
-    <meta name="description" content="Create elegant, high-quality personalized Vijayadashami and Dussehra greeting cards. Download high-resolution 1080x1350 PNG cards or share directly on WhatsApp.">
+    <meta name="description" content="Create personalized luxury Vijayadashami and Dussehra greeting cards. Download high-resolution 1080x1350 PNG cards or share directly on WhatsApp.">
     <meta name="keywords" content="Dussehra Greeting Card, Vijayadashami Wishes, Happy Dussehra Card Generator, Indian Festival Greetings, WhatsApp Dussehra Card">
     
     <meta property="og:title" content="Vijayadashami Dussehra Greeting Card Generator">
     <meta property="og:description" content="Craft personalized royal Vijayadashami greetings for your loved ones with live preview, high-res PNG download, and WhatsApp sharing.">
     <meta property="og:type" content="website">
 
+    <!-- Google Fonts for Devanagari & English Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Poppins:wght@300;400;500;600;700&family=Rozha+One&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@600;700&family=Cinzel:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600;700&family=Rozha+One&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
 
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- Core Stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body class="theme-royal-maroon">
 
+    <!-- Ambient Floating Particles Canvas -->
     <canvas id="bg-particle-canvas"></canvas>
 
+    <!-- Header & Navigation Bar -->
     <header class="navbar-header" id="navbar">
         <div class="nav-container">
             <a href="#home" class="nav-logo">
@@ -37,12 +42,11 @@
                 <a href="#home" class="nav-link active"><i class="fa-solid fa-house"></i> Home</a>
                 <a href="#generator" class="nav-link"><i class="fa-solid fa-wand-magic-sparkles"></i> Create Card</a>
                 <a href="#templates" class="nav-link"><i class="fa-solid fa-palette"></i> Templates</a>
-                <a href="#features" class="nav-link"><i class="fa-solid fa-star"></i> Features</a>
-                <a href="#about" class="nav-link"><i class="fa-solid fa-om"></i> Significance</a>
+                <a href="#about" class="nav-link"><i class="fa-solid fa-om"></i> About</a>
             </nav>
 
             <div class="nav-actions">
-                <a href="#generator" class="btn btn-gold-sm"><i class="fa-solid fa-pen-nib"></i> Create Card</a>
+                <a href="#generator" class="btn btn-gold-sm shimmer-effect"><i class="fa-solid fa-pen-nib"></i> Create Card</a>
                 <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
                     <i class="fa-solid fa-bars"></i>
                 </button>
@@ -50,44 +54,48 @@
         </div>
     </header>
 
+    <!-- 1. HERO SECTION — CINEMATIC REDESIGN -->
     <section class="hero-section" id="home">
+        <div class="hero-bg-overlay"></div>
+        <div class="hero-light-rays"></div>
+        
         <div class="hero-container">
             <div class="hero-content">
                 <div class="sacred-badge">
                     <span class="badge-diya">🪔</span>
-                    <span class="badge-text">VIJAYADASHAMI SPECIAL</span>
+                    <span class="badge-text">VIJAYADASHAMI • 2026</span>
                     <span class="badge-bow">🏹</span>
                 </div>
 
                 <h1 class="hero-hindi-title">शुभ विजयादशमी</h1>
                 <h2 class="hero-english-title">Happy Dussehra</h2>
 
+                <!-- Tasteful Bow & Arrow Visual Motif -->
+                <div class="hero-bow-motif">
+                    <svg viewBox="0 0 200 40" class="hero-bow-svg">
+                        <path d="M 10 20 Q 100 0 190 20" fill="none" stroke="url(#goldGrad)" stroke-width="2.5"/>
+                        <line x1="10" y1="20" x2="190" y2="20" stroke="#ffe599" stroke-width="1.5" stroke-dasharray="4,2"/>
+                        <line x1="5" y1="20" x2="195" y2="20" stroke="#ffe599" stroke-width="2"/>
+                        <polygon points="195,20 183,14 183,26" fill="#d4af37"/>
+                        <circle cx="100" cy="10" r="4" fill="#ffd700"/>
+                        <defs>
+                            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#996515" />
+                                <stop offset="50%" stop-color="#ffe599" />
+                                <stop offset="100%" stop-color="#996515" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+
                 <p class="hero-quote">
-                    “Celebrating the triumph of good over evil, the victory of light over darkness, and the beginning of new hopes and possibilities.”
+                    Craft personalized luxury Dussehra greeting cards to celebrate the triumph of virtue, peace, and eternal prosperity with your loved ones.
                 </p>
 
                 <div class="hero-cta-group">
                     <a href="#generator" class="btn btn-gold-lg shimmer-effect">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i> Create Your Card
+                        Create Your Greeting →
                     </a>
-                    <a href="#templates" class="btn btn-outline-lg">
-                        <i class="fa-solid fa-images"></i> View 3 Templates
-                    </a>
-                </div>
-
-                <div class="hero-highlights">
-                    <div class="highlight-item">
-                        <i class="fa-solid fa-bolt"></i>
-                        <span>Live Preview</span>
-                    </div>
-                    <div class="highlight-item">
-                        <i class="fa-solid fa-file-image"></i>
-                        <span>HD 1080×1350 Export</span>
-                    </div>
-                    <div class="highlight-item">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        <span>Direct WhatsApp Share</span>
-                    </div>
                 </div>
             </div>
 
@@ -98,85 +106,101 @@
                     <div class="hero-art-overlay">
                         <div class="diya-float diya-left">🪔</div>
                         <div class="diya-float diya-right">🪔</div>
-                        <div class="hero-caption">Lord Rama's Victory over Ravana • Light over Darkness</div>
+                        <div class="hero-caption">Victory of Light Over Darkness</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- 6. CARD PREVIEW & 4. PERSONALIZATION SECTION -->
     <section class="section-generator" id="generator">
         <div class="section-header center-header">
-            <span class="section-tag">PERSONALIZED CREATOR</span>
-            <h2 class="section-title">Design Your Custom Dussehra Card</h2>
-            <p class="section-subtitle">Customize names, greetings, themes, and animations with instant live preview</p>
+            <span class="section-tag">PREMIUM CARD CREATOR</span>
+            <h2 class="section-title">Personalize Your Festive Card</h2>
+            <p class="section-subtitle">Enter custom details below to generate your high-resolution Dussehra card with live interactive preview</p>
         </div>
 
         <div class="generator-grid-container">
+            <!-- LEFT COLUMN: CONTROLS & PERSONALIZATION FORM -->
             <div class="generator-controls-card">
                 <div class="controls-header">
-                    <h3><i class="fa-solid fa-sliders"></i> Personalization Controls</h3>
+                    <h3><i class="fa-solid fa-sliders"></i> Personalization</h3>
                     <button type="button" id="btn-reset-preset" class="btn-text-gold" title="Reset to default blessing">
                         <i class="fa-solid fa-rotate-left"></i> Reset Preset
                     </button>
                 </div>
 
                 <form id="card-form" class="generator-form" onsubmit="return false;">
-                    <div class="form-group">
-                        <label for="recipient-input">
-                            <i class="fa-solid fa-user"></i> Recipient Name (To)
+                    <!-- Recipient Field -->
+                    <div class="form-group floating-field">
+                        <label for="recipient-input" class="form-label">
+                            <i class="fa-solid fa-user"></i> Recipient Name
                         </label>
-                        <input type="text" id="recipient-input" class="form-input" placeholder="e.g. Dear Family & Friends" value="Dear Family & Friends" maxlength="50">
+                        <input type="text" id="recipient-input" class="form-input" placeholder="Enter recipient name" value="Dear Family & Friends" maxlength="50">
                     </div>
 
-                    <div class="form-group">
-                        <label for="sender-input">
-                            <i class="fa-solid fa-feather-pointed"></i> Sender Name (From)
-                        </label>
-                        <input type="text" id="sender-input" class="form-input" placeholder="e.g. Dan Babi" value="Dan Babi" maxlength="40">
-                    </div>
-
-                    <div class="form-group">
+                    <!-- Custom Message Field -->
+                    <div class="form-group floating-field">
                         <div class="label-row">
-                            <label for="message-input">
-                                <i class="fa-solid fa-envelope-open-text"></i> Custom Greeting Message
+                            <label for="message-input" class="form-label">
+                                <i class="fa-solid fa-envelope-open-text"></i> Your Message
                             </label>
                             <span class="char-count" id="char-counter">0 / 250</span>
                         </div>
-                        <textarea id="message-input" class="form-textarea" rows="4" placeholder="Enter your heartfelt Vijayadashami blessing..." maxlength="250">On this auspicious Vijayadashami, may the light of goodness shine brightly in your life, bringing peace to your heart, happiness to your home, and prosperity to your journey. May every challenge turn into an opportunity and every new beginning bring success. Wishing you and your loved ones a beautiful and blessed Dussehra!</textarea>
+                        <textarea id="message-input" class="form-textarea" rows="4" placeholder="Enter your Dussehra message" maxlength="250">On this auspicious Vijayadashami, may the light of goodness shine brightly in your life, bringing peace to your heart, happiness to your home, and prosperity to your journey. May every challenge turn into an opportunity and every new beginning bring success. Wishing you and your loved ones a beautiful and blessed Dussehra!</textarea>
                     </div>
 
+                    <!-- Sender Field -->
+                    <div class="form-group floating-field">
+                        <label for="sender-input" class="form-label">
+                            <i class="fa-solid fa-feather-pointed"></i> From
+                        </label>
+                        <input type="text" id="sender-input" class="form-input" placeholder="Your name" value="Dan Babi" maxlength="40">
+                    </div>
+
+                    <!-- 5. TEMPLATE SELECTOR (MINIATURE PREVIEWS) -->
                     <div class="form-group">
-                        <label><i class="fa-solid fa-paint-roller"></i> Select Premium Template</label>
+                        <label class="form-label"><i class="fa-solid fa-paint-roller"></i> Select Template</label>
                         <div class="template-radio-grid">
-                            <label class="template-option active" data-template="royal_gold">
-                                <input type="radio" name="template_select" value="royal_gold" checked>
-                                <div class="template-thumb thumb-royal-gold">
-                                    <div class="thumb-icon">🪔</div>
+                            <div class="template-option active" data-template="royal_gold">
+                                <input type="radio" name="template_select" id="tmpl-royal-gold" value="royal_gold" checked>
+                                <div class="template-mini-card mini-royal-gold">
+                                    <div class="mini-bg-pattern"></div>
+                                    <div class="mini-diya">🪔</div>
+                                    <div class="mini-title">Royal Gold</div>
+                                    <div class="mini-check"><i class="fa-solid fa-check"></i></div>
                                 </div>
-                                <span class="template-label">Royal Gold</span>
-                            </label>
+                                <span class="template-desc">Deep maroon + antique gold</span>
+                            </div>
 
-                            <label class="template-option" data-template="divine_light">
-                                <input type="radio" name="template_select" value="divine_light">
-                                <div class="template-thumb thumb-divine-light">
-                                    <div class="thumb-icon">✨</div>
+                            <div class="template-option" data-template="divine_light">
+                                <input type="radio" name="template_select" id="tmpl-divine-light" value="divine_light">
+                                <div class="template-mini-card mini-divine-light">
+                                    <div class="mini-bg-pattern"></div>
+                                    <div class="mini-diya">✨</div>
+                                    <div class="mini-title">Divine Light</div>
+                                    <div class="mini-check"><i class="fa-solid fa-check"></i></div>
                                 </div>
-                                <span class="template-label">Divine Light</span>
-                            </label>
+                                <span class="template-desc">Dark + golden rays</span>
+                            </div>
 
-                            <label class="template-option" data-template="festive_heritage">
-                                <input type="radio" name="template_select" value="festive_heritage">
-                                <div class="template-thumb thumb-festive-heritage">
-                                    <div class="thumb-icon">🏹</div>
+                            <div class="template-option" data-template="festive_heritage">
+                                <input type="radio" name="template_select" id="tmpl-festive-heritage" value="festive_heritage">
+                                <div class="template-mini-card mini-festive-heritage">
+                                    <div class="mini-bg-pattern"></div>
+                                    <div class="mini-diya">🏹</div>
+                                    <div class="mini-title">Festive Heritage</div>
+                                    <div class="mini-check"><i class="fa-solid fa-check"></i></div>
                                 </div>
-                                <span class="template-label">Festive Heritage</span>
-                            </label>
+                                <span class="template-desc">Traditional crimson</span>
+                            </div>
                         </div>
                     </div>
 
+                    <!-- Typography Selector -->
                     <div class="form-group">
-                        <label for="font-select"><i class="fa-solid fa-font"></i> Card Typography Style</label>
+                        <label for="font-select" class="form-label"><i class="fa-solid fa-font"></i> Typography Style</label>
                         <select id="font-select" class="form-select">
                             <option value="royal-serif">Royal Serif (Cinzel & Cormorant)</option>
                             <option value="devanagari-classic">Classic Hindi (Rozha & Tiro Devanagari)</option>
@@ -184,8 +208,9 @@
                         </select>
                     </div>
 
+                    <!-- Visual Options -->
                     <div class="form-group">
-                        <label><i class="fa-solid fa-sparkles"></i> Visual Effects & Animations</label>
+                        <label class="form-label"><i class="fa-solid fa-sparkles"></i> Visual Effects</label>
                         <div class="toggle-switch-grid">
                             <label class="toggle-item">
                                 <input type="checkbox" id="toggle-diya-glow" checked>
@@ -198,47 +223,53 @@
                                 <span class="toggle-slider"></span>
                                 <span class="toggle-label"><i class="fa-solid fa-sun"></i> Golden Sparkles</span>
                             </label>
-
-                            <label class="toggle-item">
-                                <input type="checkbox" id="toggle-shimmer" checked>
-                                <span class="toggle-slider"></span>
-                                <span class="toggle-label"><i class="fa-solid fa-wand-magic"></i> Gold Foil Shimmer</span>
-                            </label>
                         </div>
                     </div>
 
+                    <!-- 7 & 8. DOWNLOAD & SHARE BUTTONS STACK -->
                     <div class="action-buttons-stack">
-                        <div class="download-row">
-                            <button type="button" id="btn-download-client" class="btn btn-gold-lg shimmer-effect flex-1">
-                                <i class="fa-solid fa-download"></i> Download PNG Card
-                            </button>
-                            <button type="button" id="btn-download-server" class="btn btn-outline-md" title="Download via Python Pillow Backend">
-                                <i class="fa-solid fa-server"></i> Pillow HD
+                        <div class="download-primary-wrapper">
+                            <button type="button" id="btn-download-client" class="btn btn-gold-lg shimmer-effect btn-block">
+                                <i class="fa-solid fa-download"></i> ⬇ Download HD Card
                             </button>
                         </div>
 
-                        <div class="share-row">
+                        <div class="secondary-actions-row">
                             <button type="button" id="btn-share-whatsapp" class="btn btn-whatsapp flex-1">
-                                <i class="fa-brands fa-whatsapp"></i> Share on WhatsApp
+                                <i class="fa-brands fa-whatsapp"></i> 💬 Share on WhatsApp
                             </button>
                             <button type="button" id="btn-copy-message" class="btn btn-secondary flex-1">
-                                <i class="fa-solid fa-copy"></i> Copy Message
+                                <i class="fa-solid fa-copy"></i> 📋 Copy Message
+                            </button>
+                        </div>
+
+                        <!-- Pillow HD Fallback / Server Button -->
+                        <div class="pillow-download-row">
+                            <button type="button" id="btn-download-server" class="btn btn-outline-sm btn-block-sm" title="Download via Python Pillow Backend">
+                                <i class="fa-solid fa-server"></i> Download via Pillow Engine (HD)
                             </button>
                         </div>
                     </div>
                 </form>
             </div>
 
+            <!-- RIGHT COLUMN: LARGE LIVE CARD PREVIEW (2. GREETING CARD) -->
             <div class="generator-preview-card">
                 <div class="preview-header-bar">
-                    <span class="preview-title"><i class="fa-solid fa-eye"></i> Live Interactive Preview</span>
-                    <span class="aspect-tag"><i class="fa-solid fa-crop-simple"></i> 1080 × 1350 (4:5)</span>
+                    <span class="preview-title"><i class="fa-solid fa-eye"></i> Live Greeting Card Preview</span>
+                    <span class="aspect-tag"><i class="fa-solid fa-crop-simple"></i> 4:5 Portrait Ratio (1080×1350)</span>
                 </div>
 
                 <div class="card-viewport">
                     <div id="live-card-container" class="greeting-card-surface template-royal_gold font-royal-serif">
+                        <!-- Card Background Texture & Glow -->
+                        <div class="card-radial-glow"></div>
+                        <div class="card-mandala-pattern"></div>
+
+                        <!-- Canvas for floating sparkles on card -->
                         <canvas id="card-particle-canvas"></canvas>
 
+                        <!-- Luxury Dual Golden Borders & Corner Motifs -->
                         <div class="card-ornament-border">
                             <div class="corner-ornament corner-top-left"></div>
                             <div class="corner-ornament corner-top-right"></div>
@@ -246,17 +277,19 @@
                             <div class="corner-ornament corner-bottom-right"></div>
                         </div>
 
+                        <!-- 3. CARD TYPOGRAPHY & LAYOUT CONTENT -->
                         <div class="card-content-layer">
+                            <!-- Top Decorative Motif & Diyas -->
                             <div class="card-top-motif">
                                 <div class="diya-element diya-left glow-effect">
                                     <div class="flame"></div>
                                     <div class="diya-base">🪔</div>
                                 </div>
-                                <div class="center-bow-icon">
-                                    <svg viewBox="0 0 100 50" class="bow-svg">
-                                        <path d="M 10 25 Q 50 5 90 25 Q 50 45 10 25 Z" fill="none" stroke="#d4af37" stroke-width="2"/>
-                                        <line x1="5" y1="25" x2="95" y2="25" stroke="#ffe599" stroke-width="2"/>
-                                        <polygon points="95,25 85,20 85,30" fill="#d4af37"/>
+                                <div class="card-bow-icon">
+                                    <svg viewBox="0 0 100 40" class="bow-mini-svg">
+                                        <path d="M 10 20 Q 50 5 90 20 Q 50 35 10 20 Z" fill="none" stroke="#d4af37" stroke-width="2"/>
+                                        <line x1="5" y1="20" x2="95" y2="20" stroke="#ffe599" stroke-width="2"/>
+                                        <polygon points="95,20 85,15 85,25" fill="#d4af37"/>
                                     </svg>
                                 </div>
                                 <div class="diya-element diya-right glow-effect">
@@ -265,8 +298,12 @@
                                 </div>
                             </div>
 
+                            <!-- 1 & 2. Festival Titles -->
                             <h3 id="card-hindi-heading" class="card-title-devanagari">शुभ विजयादशमी</h3>
                             <h4 id="card-english-heading" class="card-title-english">HAPPY DUSSEHRA</h4>
+
+                            <!-- Subtle Year Stamp -->
+                            <div class="card-year-stamp">Vijayadashami • 2026</div>
 
                             <div class="card-divider">
                                 <span class="divider-line"></span>
@@ -274,6 +311,7 @@
                                 <span class="divider-line"></span>
                             </div>
 
+                            <!-- Message & Recipient Box -->
                             <div class="card-message-box">
                                 <div id="card-recipient-line" class="card-recipient-text">To: Dear Family & Friends</div>
 
@@ -287,10 +325,12 @@
                                 </div>
                             </div>
 
+                            <!-- Sender Name Line -->
                             <div id="card-sender-line" class="card-sender-text">
                                 — With Warm Regards, Dan Babi
                             </div>
 
+                            <!-- Bottom Motif -->
                             <div class="card-bottom-motif">
                                 <span class="motif-leaf">🪔</span>
                                 <span class="motif-dots">✦ ✦ ✦</span>
@@ -301,72 +341,61 @@
                 </div>
 
                 <div class="preview-footer-tip">
-                    <i class="fa-solid fa-circle-info"></i> Tip: Use "Download PNG Card" to get a crisp 1080×1350 image perfect for WhatsApp Status and Instagram!
+                    <i class="fa-solid fa-circle-info"></i> Tip: Use "Download HD Card" to save a crisp 1080×1350 PNG image.
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- 5. TEMPLATE COLLECTION SHOWCASE -->
     <section class="section-templates" id="templates">
         <div class="section-header center-header">
             <span class="section-tag">ROYAL COLLECTION</span>
             <h2 class="section-title">Explore 3 Premium Card Designs</h2>
-            <p class="section-subtitle">Each template offers a unique luxurious aesthetic tailored for Vijayadashami</p>
+            <p class="section-subtitle">Select any design below to apply it instantly to your personalized greeting card</p>
         </div>
 
         <div class="templates-cards-grid">
+            <!-- Template 1 Showcase -->
             <div class="template-showcase-card" data-select-template="royal_gold">
                 <div class="showcase-img-wrapper">
                     <img src="{{ url_for('static', filename='images/royal_gold_bg.jpg') }}" alt="Royal Gold Dussehra Template" class="showcase-img">
-                    <div class="showcase-badge">Popular Choice</div>
+                    <div class="showcase-badge">Royal Gold</div>
                 </div>
                 <div class="showcase-info">
-                    <h3>Template 1 — Royal Gold</h3>
-                    <p>Deep royal maroon canvas with intricate antique gold mandala filigree, twin glowing diyas, and royal serif typography.</p>
-                    <ul class="template-features-list">
-                        <li><i class="fa-solid fa-check"></i> Rich Royal Maroon Background</li>
-                        <li><i class="fa-solid fa-check"></i> Central Golden Mandala</li>
-                        <li><i class="fa-solid fa-check"></i> Gold Foil Filigree Border</li>
-                    </ul>
-                    <button class="btn btn-gold-sm btn-apply-template" data-template="royal_gold">
+                    <h3>Royal Gold</h3>
+                    <p>Deep maroon canvas + antique gold accents + luxury Indian ornamentation.</p>
+                    <button type="button" class="btn btn-gold-sm btn-apply-template" data-template="royal_gold">
                         <i class="fa-solid fa-wand-magic-sparkles"></i> Use Royal Gold
                     </button>
                 </div>
             </div>
 
+            <!-- Template 2 Showcase -->
             <div class="template-showcase-card" data-select-template="divine_light">
                 <div class="showcase-img-wrapper">
                     <img src="{{ url_for('static', filename='images/divine_light_bg.jpg') }}" alt="Divine Light Dussehra Template" class="showcase-img">
-                    <div class="showcase-badge divine-badge">Divine Glow</div>
+                    <div class="showcase-badge divine-badge">Divine Light</div>
                 </div>
                 <div class="showcase-info">
-                    <h3>Template 2 — Divine Light</h3>
-                    <p>Dark charcoal ebony background with celestial golden light rays streaming from above and a glowing temple silhouette.</p>
-                    <ul class="template-features-list">
-                        <li><i class="fa-solid fa-check"></i> Celestial Light Rays Effect</li>
-                        <li><i class="fa-solid fa-check"></i> Temple Architectural Arch</li>
-                        <li><i class="fa-solid fa-check"></i> Minimalist Dark Luxury</li>
-                    </ul>
-                    <button class="btn btn-gold-sm btn-apply-template" data-template="divine_light">
+                    <h3>Divine Light</h3>
+                    <p>Dark background + golden light rays + ambient diya glow.</p>
+                    <button type="button" class="btn btn-gold-sm btn-apply-template" data-template="divine_light">
                         <i class="fa-solid fa-wand-magic-sparkles"></i> Use Divine Light
                     </button>
                 </div>
             </div>
 
+            <!-- Template 3 Showcase -->
             <div class="template-showcase-card" data-select-template="festive_heritage">
                 <div class="showcase-img-wrapper">
                     <img src="{{ url_for('static', filename='images/festive_heritage_bg.jpg') }}" alt="Festive Heritage Dussehra Template" class="showcase-img">
-                    <div class="showcase-badge heritage-badge">Traditional</div>
+                    <div class="showcase-badge heritage-badge">Festive Heritage</div>
                 </div>
                 <div class="showcase-info">
-                    <h3>Template 3 — Festive Heritage</h3>
-                    <p>Rich crimson velvet canvas accented with traditional Indian kalash motifs, marigold garlands, and hanging golden diyas.</p>
-                    <ul class="template-features-list">
-                        <li><i class="fa-solid fa-check"></i> Deep Crimson Velvet Canvas</li>
-                        <li><i class="fa-solid fa-check"></i> Kalash & Garland Motifs</li>
-                        <li><i class="fa-solid fa-check"></i> Classic Heritage Borders</li>
-                    </ul>
-                    <button class="btn btn-gold-sm btn-apply-template" data-template="festive_heritage">
+                    <h3>Festive Heritage</h3>
+                    <p>Traditional Indian festive patterns + rich crimson + gold filigree.</p>
+                    <button type="button" class="btn btn-gold-sm btn-apply-template" data-template="festive_heritage">
                         <i class="fa-solid fa-wand-magic-sparkles"></i> Use Festive Heritage
                     </button>
                 </div>
@@ -374,70 +403,64 @@
         </div>
     </section>
 
+    <!-- 12. FEATURES SECTION (EXACTLY 4 CARDS AS REQUESTED) -->
     <section class="section-features" id="features">
         <div class="section-header center-header">
-            <span class="section-tag">PREMIUM EXPERIENCE</span>
-            <h2 class="section-title">Built for Real-World Festive Celebrations</h2>
-            <p class="section-subtitle">Everything you need to send thoughtful Vijayadashami greetings to friends, family, and clients</p>
+            <span class="section-tag">WHY USE FESTIVE WISHES</span>
+            <h2 class="section-title">Designed for Vijayadashami</h2>
+            <p class="section-subtitle">Crafted with attention to detail for an authentic luxury festival greeting experience</p>
         </div>
 
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon-wrapper">
-                    <i class="fa-solid fa-user-pen"></i>
+                    ✨
                 </div>
-                <h3>Personalized Greetings</h3>
-                <p>Customize recipient and sender names along with heartfelt Vijayadashami blessings. Real-time preview updates as you type.</p>
+                <h3>Premium Designs</h3>
+                <p>Elegant Dussehra templates crafted with deep maroons, antique gold, and traditional motifs.</p>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon-wrapper">
-                    <i class="fa-solid fa-palette"></i>
+                    🖋
                 </div>
-                <h3>3 Royal Templates</h3>
-                <p>Designed with deep royal maroons, crimson velvets, antique gold accents, and sacred Indian festive iconography.</p>
+                <h3>Personalised Wishes</h3>
+                <p>Add recipient and sender names along with custom heartfelt blessings with live preview.</p>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon-wrapper">
-                    <i class="fa-solid fa-file-arrow-down"></i>
+                    📥
                 </div>
-                <h3>High-Res PNG Download</h3>
-                <p>Export pixel-perfect 1080×1350 (4:5 ratio) PNG cards locally or using Python Pillow backend, ideal for WhatsApp status & posts.</p>
+                <h3>HD Download</h3>
+                <p>Download a high-quality greeting card in crisp 1080×1350 4:5 portrait PNG format.</p>
             </div>
 
             <div class="feature-card">
                 <div class="feature-icon-wrapper">
-                    <i class="fa-brands fa-whatsapp"></i>
+                    💬
                 </div>
-                <h3>1-Click WhatsApp Share</h3>
-                <p>Instantly generate personalized festive WhatsApp text messages with one-click direct launcher and clipboard copying.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon-wrapper">
-                    <i class="fa-solid fa-mobile-screen-button"></i>
-                </div>
-                <h3>Mobile First & Responsive</h3>
-                <p>Designed for touch devices, smartphones, tablets, and desktops with smooth animations and touch-friendly controls.</p>
+                <h3>Easy Sharing</h3>
+                <p>Share directly through WhatsApp or copy formatted blessings to your clipboard instantly.</p>
             </div>
         </div>
     </section>
 
+    <!-- 13. SIGNIFICANCE SECTION (REDESIGNED LUXURY LOOK) -->
     <section class="section-about" id="about">
         <div class="about-container">
             <div class="about-content">
-                <span class="section-tag">VIJAYADASHAMI ESSENCE</span>
-                <h2 class="section-title">The Sacred Victory of Dharma</h2>
+                <span class="section-tag">VIJAYADASHAMI SIGNIFICANCE</span>
+                <h2 class="section-title">The Sacred Victory of Goodness</h2>
                 <p class="about-lead">
-                    Dussehra, also known as Vijayadashami, marks the glorious victory of Lord Rama over the demon king Ravana, symbolizing the eternal triumph of righteousness (Dharma) over evil (Adharma).
+                    Vijayadashami marks the triumph of Lord Rama over Ravana, symbolizing the eternal victory of Dharma over Adharma, light over darkness, and truth over falsehood.
                 </p>
                 <p class="about-text">
-                    It also celebrates Goddess Durga's victory over the buffalo demon Mahishasura after nine days of fierce battle. On this auspicious day, people burn effigies of Ravana, perform Shami Puja, exchange Aapta leaves as symbolic gold, and seek blessings for new beginnings, prosperity, and wisdom.
+                    It also honors Goddess Durga's conquest over the demon Mahishasura after nine nights of devotion. On this revered day, families gather to exchange blessings, perform Shami Puja, light diyas, and welcome prosperity into every home.
                 </p>
                 <div class="about-quote-box">
                     <i class="fa-solid fa-quote-left quote-icon"></i>
-                    <p>“May the divine blessings of Lord Rama fill your life with strength, courage, and radiant joy on this Vijayadashami.”</p>
+                    <p>“May the divine light of Vijayadashami illuminate your path with wisdom, joy, and endless peace.”</p>
                 </div>
             </div>
 
@@ -461,61 +484,32 @@
         </div>
     </section>
 
-    <section class="section-cta">
-        <div class="cta-banner">
-            <div class="cta-glow"></div>
-            <h2 class="cta-title">Spread Joy & Blessings This Vijayadashami</h2>
-            <p class="cta-text">Create a personalized greeting card in seconds and share warmth with your family and friends.</p>
-            <a href="#generator" class="btn btn-gold-lg shimmer-effect">
-                Create Your Card →
-            </a>
-        </div>
-    </section>
-
+    <!-- 9. SUCCESS NOTIFICATION TOAST -->
     <div id="toast-notification" class="toast-container">
-        <i id="toast-icon" class="fa-solid fa-circle-check"></i>
-        <span id="toast-message">Greeting Card Downloaded Successfully!</span>
+        <span id="toast-icon">✨</span>
+        <span id="toast-message">Your Dussehra greeting is ready!</span>
     </div>
 
+    <!-- Hidden Export Canvas for High-Resolution PNG generation -->
     <canvas id="export-canvas" width="1080" height="1350" style="display: none;"></canvas>
 
+    <!-- 14. FOOTER SECTION -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-brand">
                 <a href="#home" class="footer-logo">
                     <span>🪔</span> Festive Wishes
                 </a>
-                <p>Crafting royal & emotional Indian festival greeting cards for Vijayadashami & Dussehra.</p>
-            </div>
-
-            <div class="footer-links">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#generator">Card Generator</a></li>
-                    <li><a href="#templates">Templates Collection</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#about">Significance</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-tech">
-                <h4>Tech Stack</h4>
-                <div class="tech-badges">
-                    <span class="badge"><i class="fa-brands fa-html5"></i> HTML5</span>
-                    <span class="badge"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
-                    <span class="badge"><i class="fa-brands fa-js"></i> Vanilla JS</span>
-                    <span class="badge"><i class="fa-brands fa-python"></i> Python Flask</span>
-                    <span class="badge"><i class="fa-solid fa-image"></i> Pillow</span>
-                </div>
+                <p>Wishing you and your family a joyful and prosperous Dussehra.</p>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>Crafted with ❤️ using HTML, CSS, JavaScript & Python Flask | Happy Dussehra!</p>
+            <p>Crafted with ❤️ using HTML, CSS, JavaScript & Python Flask</p>
         </div>
     </footer>
 
+    <!-- Core Application Logic -->
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

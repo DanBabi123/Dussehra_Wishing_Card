@@ -1,4 +1,10 @@
+/**
+ * FESTIVE WISHES — VIJAYADASHAMI DUSSEHRA GREETING CARD GENERATOR
+ * Interactive Logic, Live Rendering, Canvas Export & WhatsApp Integration
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
+    // Input Controls
     const recipientInput = document.getElementById('recipient-input');
     const senderInput = document.getElementById('sender-input');
     const messageInput = document.getElementById('message-input');
@@ -6,44 +12,56 @@ document.addEventListener('DOMContentLoaded', () => {
     const charCounter = document.getElementById('char-counter');
     const btnResetPreset = document.getElementById('btn-reset-preset');
 
+    // Card Surface Elements
     const cardContainer = document.getElementById('live-card-container');
     const cardHindiHeading = document.getElementById('card-hindi-heading');
-    const cardEnglishHeading = document.getElementById('card-english-heading');
     const cardRecipientLine = document.getElementById('card-recipient-line');
     const cardMessageBody = document.getElementById('card-message-body');
     const cardSenderLine = document.getElementById('card-sender-line');
 
+    // Visual Effect Toggles
     const toggleDiyaGlow = document.getElementById('toggle-diya-glow');
     const toggleParticles = document.getElementById('toggle-particles');
-    const toggleShimmer = document.getElementById('toggle-shimmer');
 
+    // Action Buttons
     const btnDownloadClient = document.getElementById('btn-download-client');
     const btnDownloadServer = document.getElementById('btn-download-server');
     const btnShareWhatsapp = document.getElementById('btn-share-whatsapp');
     const btnCopyMessage = document.getElementById('btn-copy-message');
 
+    // Navbar Mobile Toggle
     const mobileToggle = document.getElementById('mobile-toggle');
     const navMenu = document.getElementById('nav-menu');
 
+    // Default Dussehra Blessing Text
     const DEFAULT_MESSAGE = "On this auspicious Vijayadashami, may the light of goodness shine brightly in your life, bringing peace to your heart, happiness to your home, and prosperity to your journey. May every challenge turn into an opportunity and every new beginning bring success. Wishing you and your loved ones a beautiful and blessed Dussehra!";
 
     let activeTemplate = 'royal_gold';
     let particlesEnabled = true;
 
+    /**
+     * Update Live Card Preview in Real-time
+     */
     function updateLiveCard() {
         const recipient = recipientInput.value.trim() || 'Dear Family & Friends';
         const sender = senderInput.value.trim() || 'Dan Babi';
         const message = messageInput.value.trim() || DEFAULT_MESSAGE;
         const fontStyle = fontSelect.value;
 
-        charCounter.textContent = `${messageInput.value.length} / 250`;
+        // Update Character Counter
+        if (charCounter) {
+            charCounter.textContent = `${messageInput.value.length} / 250`;
+        }
 
+        // Update Card Text Lines
         cardRecipientLine.textContent = `To: ${recipient}`;
         cardMessageBody.textContent = message;
         cardSenderLine.textContent = `— With Warm Regards, ${sender}`;
 
+        // Update Card Surface Classes for Template & Typography
         cardContainer.className = `greeting-card-surface template-${activeTemplate} font-${fontStyle}`;
 
+        // Toggle Diya Glow
         const diyas = cardContainer.querySelectorAll('.diya-element');
         diyas.forEach(diya => {
             if (toggleDiyaGlow.checked) {
@@ -52,20 +70,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 diya.classList.remove('glow-effect');
             }
         });
-
-        if (toggleShimmer.checked) {
-            cardHindiHeading.classList.add('shimmer-effect');
-        } else {
-            cardHindiHeading.classList.remove('shimmer-effect');
-        }
     }
 
+    // Event Listeners for Live Updates
     recipientInput.addEventListener('input', updateLiveCard);
     senderInput.addEventListener('input', updateLiveCard);
     messageInput.addEventListener('input', updateLiveCard);
     fontSelect.addEventListener('change', updateLiveCard);
     toggleDiyaGlow.addEventListener('change', updateLiveCard);
-    toggleShimmer.addEventListener('change', updateLiveCard);
     
     toggleParticles.addEventListener('change', () => {
         particlesEnabled = toggleParticles.checked;
@@ -75,16 +87,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Reset Form to Default Preset
     btnResetPreset.addEventListener('click', () => {
         recipientInput.value = 'Dear Family & Friends';
         senderInput.value = 'Dan Babi';
         messageInput.value = DEFAULT_MESSAGE;
         updateLiveCard();
-        showToast('Reset to default Dussehra blessing! 🪔', 'fa-solid fa-rotate-left');
+        showToast('✨ Reset to default Dussehra blessing!');
     });
 
+    /**
+     * Template Selector Options
+     */
     const templateOptions = document.querySelectorAll('.template-option');
-
     templateOptions.forEach(option => {
         option.addEventListener('click', () => {
             templateOptions.forEach(opt => opt.classList.remove('active'));
@@ -98,9 +113,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Apply Template from Showcase Section Buttons
     const btnApplyTemplates = document.querySelectorAll('.btn-apply-template');
     btnApplyTemplates.forEach(btn => {
-        btn.addEventListener('click', (e) => {
+        btn.addEventListener('click', () => {
             const selectedTmpl = btn.getAttribute('data-template');
             activeTemplate = selectedTmpl;
 
@@ -112,23 +128,27 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             updateLiveCard();
-            showToast(`Applied Template: ${selectedTmpl.replace('_', ' ').toUpperCase()} ✨`, 'fa-solid fa-wand-magic-sparkles');
+            const tmplTitle = selectedTmpl.replace('_', ' ').toUpperCase();
+            showToast(`✨ Selected ${tmplTitle} Template!`);
 
             document.getElementById('generator').scrollIntoView({ behavior: 'smooth' });
         });
     });
 
+    /**
+     * Primary Client-Side HTML5 Canvas HD Export (1080 x 1350 resolution)
+     */
     btnDownloadClient.addEventListener('click', async () => {
         const originalText = btnDownloadClient.innerHTML;
         btnDownloadClient.disabled = true;
-        btnDownloadClient.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Rendering HD Card...';
+        btnDownloadClient.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Generating HD Card...';
 
         try {
             await renderAndDownloadCanvas();
-            showToast('Greeting Card Downloaded Successfully! ⬇️', 'fa-solid fa-circle-check');
+            showToast('✨ Your Dussehra greeting is ready!');
         } catch (err) {
             console.error('Canvas export error:', err);
-            showToast('Fallback to Pillow HD Download...', 'fa-solid fa-triangle-exclamation');
+            showToast('Fallback to Pillow Engine HD Download...', '⚙️');
             downloadViaServer();
         } finally {
             btnDownloadClient.disabled = false;
@@ -144,6 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         ctx.clearRect(0, 0, width, height);
 
+        // Load background image for selected template
         const bgImg = new Image();
         bgImg.crossOrigin = 'anonymous';
         bgImg.src = `/static/images/${activeTemplate}_bg.jpg`;
@@ -153,18 +174,28 @@ document.addEventListener('DOMContentLoaded', () => {
             bgImg.onerror = () => reject(new Error('Failed to load template background image'));
         });
 
+        // Draw Template Background
         ctx.drawImage(bgImg, 0, 0, width, height);
 
-        const panelMargin = 100;
+        // Radial Golden Glow Overlay
+        const grad = ctx.createRadialGradient(width/2, height*0.35, 20, width/2, height*0.35, width*0.5);
+        grad.addColorStop(0, 'rgba(255, 229, 153, 0.22)');
+        grad.addColorStop(0.5, 'rgba(212, 175, 55, 0.08)');
+        grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, width, height);
+
+        // Outer & Inner Gold Filigree Borders
+        const panelMargin = 85;
         const panelTop = 330;
         const panelBottom = 1170;
         const panelWidth = width - (panelMargin * 2);
         const panelHeight = panelBottom - panelTop;
 
         ctx.save();
-        ctx.fillStyle = activeTemplate === 'divine_light' ? 'rgba(16, 10, 12, 0.72)' :
-                        activeTemplate === 'festive_heritage' ? 'rgba(56, 5, 16, 0.75)' : 'rgba(38, 4, 10, 0.78)';
-        ctx.strokeStyle = 'rgba(212, 175, 55, 0.7)';
+        ctx.fillStyle = activeTemplate === 'divine_light' ? 'rgba(16, 8, 12, 0.76)' :
+                        activeTemplate === 'festive_heritage' ? 'rgba(56, 5, 16, 0.78)' : 'rgba(36, 4, 10, 0.82)';
+        ctx.strokeStyle = 'rgba(212, 175, 55, 0.75)';
         ctx.lineWidth = 3;
 
         ctx.beginPath();
@@ -173,27 +204,33 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.stroke();
         ctx.restore();
 
+        // 1 & 2. Festival Title & Heading
         ctx.save();
         ctx.textAlign = 'center';
         ctx.fillStyle = '#f3e5ab';
         ctx.shadowColor = 'rgba(0, 0, 0, 0.9)';
-        ctx.shadowBlur = 12;
+        ctx.shadowBlur = 14;
         ctx.shadowOffsetY = 4;
-        ctx.font = 'bold 64px "Rozha One", "Tiro Devanagari Hindi", serif';
-        ctx.fillText('शुभ विजयादशमी', width / 2, 160);
+        ctx.font = 'bold 66px "Rozha One", "Tiro Devanagari Hindi", serif';
+        ctx.fillText('शुभ विजयादशमी', width / 2, 155);
 
         ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold 38px "Cinzel", serif';
-        ctx.fillText('HAPPY DUSSEHRA', width / 2, 230);
+        ctx.font = 'bold 36px "Cinzel", serif';
+        ctx.fillText('HAPPY DUSSEHRA', width / 2, 220);
+
+        ctx.fillStyle = '#ffe599';
+        ctx.font = '600 22px "Poppins", sans-serif';
+        ctx.fillText('Vijayadashami • 2026', width / 2, 255);
 
         ctx.strokeStyle = '#d4af37';
         ctx.lineWidth = 2;
         ctx.beginPath();
-        ctx.moveTo(width / 2 - 140, 265);
-        ctx.lineTo(width / 2 + 140, 265);
+        ctx.moveTo(width / 2 - 140, 280);
+        ctx.lineTo(width / 2 + 140, 280);
         ctx.stroke();
         ctx.restore();
 
+        // Recipient Line
         const recipient = recipientInput.value.trim() || 'Dear Family & Friends';
         ctx.save();
         ctx.textAlign = 'center';
@@ -203,11 +240,12 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.shadowBlur = 6;
         ctx.fillText(`To: ${recipient}`, width / 2, panelTop + 55);
 
+        // Main Message Paragraph Wrapping
         const message = messageInput.value.trim() || DEFAULT_MESSAGE;
         ctx.fillStyle = '#fdfbf7';
         ctx.font = '28px "Cormorant Garamond", "Poppins", serif';
 
-        const maxTextWidth = panelWidth - 80;
+        const maxTextWidth = panelWidth - 90;
         const words = message.split(' ');
         let line = '';
         let lines = [];
@@ -225,21 +263,23 @@ document.addEventListener('DOMContentLoaded', () => {
         lines.push(line.trim());
 
         let startY = panelTop + 130;
-        const lineHeight = 40;
+        const lineHeight = 42;
 
         lines.slice(0, 11).forEach((l, i) => {
             ctx.fillText(l, width / 2, startY + (i * lineHeight));
         });
 
+        // Closing Wish Lines
         const bY = panelBottom - 140;
         ctx.fillStyle = '#c8bdab';
-        ctx.font = '24px "Poppins", sans-serif';
+        ctx.font = '22px "Poppins", sans-serif';
         ctx.fillText('Wishing You & Your Family', width / 2, bY);
 
         ctx.fillStyle = '#ffe599';
         ctx.font = '600 30px "Cinzel", "Poppins", serif';
         ctx.fillText('A Joyful, Blessed & Prosperous Dussehra', width / 2, bY + 45);
 
+        // Sender Line
         const sender = senderInput.value.trim() || 'Dan Babi';
         ctx.fillStyle = '#f3e5ab';
         ctx.font = 'bold 36px "Poppins", sans-serif';
@@ -248,6 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.fillText(`— With Warm Regards, ${sender}`, width / 2, panelBottom + 65);
         ctx.restore();
 
+        // Save Canvas to PNG Data URL
         const dataUrl = canvas.toDataURL('image/png');
         const link = document.createElement('a');
         link.download = `Dussehra_Greeting_${activeTemplate}_${recipient.replace(/\s+/g, '_')}.png`;
@@ -257,12 +298,17 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.removeChild(link);
     }
 
-    btnDownloadServer.addEventListener('click', downloadViaServer);
+    /**
+     * Server-side Pillow Engine Download Option
+     */
+    if (btnDownloadServer) {
+        btnDownloadServer.addEventListener('click', downloadViaServer);
+    }
 
     async function downloadViaServer() {
         const originalText = btnDownloadServer.innerHTML;
         btnDownloadServer.disabled = true;
-        btnDownloadServer.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Pillow...';
+        btnDownloadServer.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Rendering via Pillow...';
 
         try {
             const payload = {
@@ -278,22 +324,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(payload)
             });
 
-            if (!response.ok) throw new Error('Pillow generator endpoint returned an error');
+            if (!response.ok) throw new Error('Pillow generator returned non-OK status');
 
             const blob = await response.blob();
             const downloadUrl = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = downloadUrl;
-            a.download = `Dussehra_Greeting_HD_${payload.recipient.replace(/\s+/g, '_')}.png`;
+            a.download = `Dussehra_Greeting_Pillow_${payload.recipient.replace(/\s+/g, '_')}.png`;
             document.body.appendChild(a);
             a.click();
             a.remove();
             window.URL.revokeObjectURL(downloadUrl);
 
-            showToast('Downloaded High-Res Pillow PNG Card! 🐍🖼️', 'fa-solid fa-circle-check');
+            showToast('✨ Your Dussehra greeting is ready!');
         } catch (err) {
             console.error('Server download error:', err);
-            showToast('Could not reach Pillow backend, rendered client-side PNG!', 'fa-solid fa-circle-info');
+            showToast('Using local browser HD PNG exporter...', 'ℹ️');
             renderAndDownloadCanvas();
         } finally {
             btnDownloadServer.disabled = false;
@@ -301,17 +347,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    /**
+     * WhatsApp Share Action
+     */
     btnShareWhatsapp.addEventListener('click', () => {
-        const recipient = recipientInput.value.trim();
-        const sender = senderInput.value.trim();
+        const recipient = recipientInput.value.trim() || 'Dear Family & Friends';
+        const sender = senderInput.value.trim() || 'Dan Babi';
         
-        let shareText = `Happy Dussehra! 🪔🏹\nMay this Vijayadashami bring happiness, peace, prosperity and beautiful new beginnings to ${recipient || 'you and your family'}.\n\nWishing you a blessed and joyful Dussehra!\n— ${sender || 'Warm Regards'}`;
+        let shareText = `Happy Dussehra! 🪔🏹\nMay this auspicious Vijayadashami bring peace, prosperity, and happiness to ${recipient}.\n\nWishing you and your family a joyful and blessed Dussehra!\n— ${sender}`;
 
         const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
         window.open(whatsappUrl, '_blank');
-        showToast('Opening WhatsApp to share greeting... 💬', 'fa-brands fa-whatsapp');
+        showToast('Opening WhatsApp to share greeting... 💬');
     });
 
+    /**
+     * Copy Message Action
+     */
     btnCopyMessage.addEventListener('click', () => {
         const message = messageInput.value.trim() || DEFAULT_MESSAGE;
         const sender = senderInput.value.trim() || 'Dan Babi';
@@ -320,13 +372,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const fullText = `Happy Dussehra! 🪔🏹\nTo: ${recipient}\n\n${message}\n\nWishing You & Your Family A Joyful, Blessed & Prosperous Dussehra!\n— With Warm Regards, ${sender}`;
 
         navigator.clipboard.writeText(fullText).then(() => {
-            showToast('Greeting message copied to clipboard! 📋', 'fa-solid fa-copy');
+            showToast('Greeting message copied to clipboard! 📋');
         }).catch(() => {
-            showToast('Failed to copy text automatically', 'fa-solid fa-triangle-exclamation');
+            showToast('Failed to copy text automatically', '⚠️');
         });
     });
 
-    function showToast(msg, iconClass = 'fa-solid fa-circle-check') {
+    /**
+     * Elegant Toast Notification Component
+     */
+    function showToast(msg, iconSymbol = '✨') {
         const toast = document.getElementById('toast-notification');
         const toastMsg = document.getElementById('toast-message');
         const toastIcon = document.getElementById('toast-icon');
@@ -334,7 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!toast || !toastMsg || !toastIcon) return;
 
         toastMsg.textContent = msg;
-        toastIcon.className = iconClass;
+        toastIcon.textContent = iconSymbol;
         toast.classList.add('show');
 
         setTimeout(() => {
@@ -342,6 +397,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3500);
     }
 
+    /**
+     * Background Ambient Particle Animation
+     */
     const bgCanvas = document.getElementById('bg-particle-canvas');
     if (bgCanvas) {
         const ctx = bgCanvas.getContext('2d');
@@ -354,7 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', resizeBgCanvas);
         resizeBgCanvas();
 
-        for (let i = 0; i < 50; i++) {
+        for (let i = 0; i < 45; i++) {
             bgParticles.push({
                 x: Math.random() * bgCanvas.width,
                 y: Math.random() * bgCanvas.height,
@@ -390,6 +448,9 @@ document.addEventListener('DOMContentLoaded', () => {
         animateBgParticles();
     }
 
+    /**
+     * Card Surface Particle Animation
+     */
     const cardCanvas = document.getElementById('card-particle-canvas');
     if (cardCanvas) {
         const cCtx = cardCanvas.getContext('2d');
@@ -404,7 +465,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', resizeCardCanvas);
         resizeCardCanvas();
 
-        for (let i = 0; i < 25; i++) {
+        for (let i = 0; i < 22; i++) {
             cardParticles.push({
                 x: Math.random() * 300,
                 y: Math.random() * 400,
@@ -436,6 +497,9 @@ document.addEventListener('DOMContentLoaded', () => {
         animateCardParticles();
     }
 
+    /**
+     * Navbar Mobile Toggle
+     */
     if (mobileToggle && navMenu) {
         mobileToggle.addEventListener('click', () => {
             navMenu.classList.toggle('mobile-open');
@@ -448,14 +512,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /**
+     * Navbar Scroll Effect
+     */
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
+        if (window.scrollY > 40) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
     });
 
+    // Initialize Card Preview on Load
     updateLiveCard();
 });

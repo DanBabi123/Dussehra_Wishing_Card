@@ -64,65 +64,77 @@ def generate_card():
             img = Image.open(bg_path).convert("RGBA")
             img = img.resize((CARD_WIDTH, CARD_HEIGHT), Image.Resampling.LANCZOS)
         else:
-            img = Image.new("RGBA", (CARD_WIDTH, CARD_HEIGHT), (42, 4, 11, 255))
+            img = Image.new("RGBA", (CARD_WIDTH, CARD_HEIGHT), (26, 6, 10, 255))
             
         draw = ImageDraw.Draw(img)
         
-        devanagari_font = load_font('RozhaOne-Regular.ttf', 64)
-        heading_font = load_font('Poppins-Bold.ttf', 44)
-        body_font = load_font('Poppins-Regular.ttf', 30)
+        devanagari_font = load_font('RozhaOne-Regular.ttf', 66)
+        heading_font = load_font('Poppins-Bold.ttf', 38)
+        body_font = load_font('Poppins-Regular.ttf', 28)
         subhead_font = load_font('Poppins-SemiBold.ttf', 32)
+        year_font = load_font('Poppins-SemiBold.ttf', 22)
         signature_font = load_font('Poppins-Bold.ttf', 36)
 
         if template == 'divine_light':
             gold_color = (255, 220, 130, 255)
             text_color = (250, 246, 235, 255)
-            shadow_color = (0, 0, 0, 180)
-            box_bg = (18, 12, 14, 160)
+            shadow_color = (0, 0, 0, 190)
+            box_bg = (16, 8, 12, 185)
         elif template == 'festive_heritage':
             gold_color = (245, 205, 100, 255)
             text_color = (255, 250, 240, 255)
-            shadow_color = (40, 4, 10, 200)
-            box_bg = (60, 6, 18, 150)
+            shadow_color = (40, 4, 10, 210)
+            box_bg = (56, 5, 16, 190)
         else:
             gold_color = (243, 229, 171, 255)
             text_color = (253, 251, 247, 255)
-            shadow_color = (20, 2, 6, 220)
-            box_bg = (42, 4, 11, 170)
+            shadow_color = (20, 2, 6, 230)
+            box_bg = (36, 4, 10, 195)
 
         overlay = Image.new("RGBA", (CARD_WIDTH, CARD_HEIGHT), (0, 0, 0, 0))
         overlay_draw = ImageDraw.Draw(overlay)
         
-        panel_margin_x = 100
-        panel_top = 340
-        panel_bottom = 1180
+        panel_margin_x = 85
+        panel_top = 330
+        panel_bottom = 1170
         overlay_draw.rounded_rectangle(
             [panel_margin_x, panel_top, CARD_WIDTH - panel_margin_x, panel_bottom],
             radius=24,
             fill=box_bg,
-            outline=(212, 175, 55, 180),
+            outline=(212, 175, 55, 190),
             width=2
         )
         img = Image.alpha_composite(img, overlay)
         draw = ImageDraw.Draw(img)
 
+        # Title: शुभ विजयादशमी
         hindi_title = "शुभ विजयादशमी"
         hindi_bbox = draw.textbbox((0, 0), hindi_title, font=devanagari_font)
         h_width = hindi_bbox[2] - hindi_bbox[0]
         h_x = (CARD_WIDTH - h_width) // 2
-        h_y = 120
+        h_y = 110
         draw.text((h_x + 3, h_y + 3), hindi_title, font=devanagari_font, fill=shadow_color)
         draw.text((h_x, h_y), hindi_title, font=devanagari_font, fill=gold_color)
 
+        # Sub-title: HAPPY DUSSEHRA
         eng_title = "HAPPY DUSSEHRA"
         eng_bbox = draw.textbbox((0, 0), eng_title, font=heading_font)
         e_width = eng_bbox[2] - eng_bbox[0]
         e_x = (CARD_WIDTH - e_width) // 2
-        e_y = h_y + 85
+        e_y = h_y + 82
         draw.text((e_x + 2, e_y + 2), eng_title, font=heading_font, fill=shadow_color)
-        draw.text((e_x, e_y), eng_title, font=heading_font, fill=(255, 235, 180, 255))
+        draw.text((e_x, e_y), eng_title, font=heading_font, fill=(255, 243, 196, 255))
 
-        draw.line([(CARD_WIDTH // 2 - 120, e_y + 65), (CARD_WIDTH // 2 + 120, e_y + 65)], fill=(212, 175, 55, 255), width=2)
+        # Year stamp: Vijayadashami • 2026
+        year_text = "Vijayadashami • 2026"
+        y_bbox = draw.textbbox((0, 0), year_text, font=year_font)
+        y_width = y_bbox[2] - y_bbox[0]
+        y_x = (CARD_WIDTH - y_width) // 2
+        y_y = e_y + 50
+        draw.text((y_x, y_y), year_text, font=year_font, fill=(255, 229, 153, 230))
+
+        # Gold accent divider line
+        draw.line([(CARD_WIDTH // 2 - 140, y_y + 35), (CARD_WIDTH // 2 + 140, y_y + 35)], fill=(212, 175, 55, 255), width=2)
 
         if recipient:
             recip_text = f"To: {recipient}"
@@ -133,14 +145,14 @@ def generate_card():
             draw.text((r_x + 1, r_y + 1), recip_text, font=subhead_font, fill=shadow_color)
             draw.text((r_x, r_y), recip_text, font=subhead_font, fill=gold_color)
 
-        msg_margin = 150
+        msg_margin = 135
         max_char_per_line = 44
         wrapped_lines = textwrap.wrap(message, width=max_char_per_line)
         
         line_height = 42
-        msg_start_y = panel_top + 100 if recipient else panel_top + 60
+        msg_start_y = panel_top + 95 if recipient else panel_top + 60
         
-        for idx, line in enumerate(wrapped_lines[:12]):
+        for idx, line in enumerate(wrapped_lines[:11]):
             m_bbox = draw.textbbox((0, 0), line, font=body_font)
             m_width = m_bbox[2] - m_bbox[0]
             m_x = (CARD_WIDTH - m_width) // 2
@@ -154,13 +166,13 @@ def generate_card():
         b1_bbox = draw.textbbox((0, 0), blessing_1, font=body_font)
         b1_width = b1_bbox[2] - b1_bbox[0]
         b1_x = (CARD_WIDTH - b1_width) // 2
-        b1_y = panel_bottom - 170
-        draw.text((b1_x, b1_y), blessing_1, font=body_font, fill=(230, 210, 160, 255))
+        b1_y = panel_bottom - 150
+        draw.text((b1_x, b1_y), blessing_1, font=body_font, fill=(200, 189, 171, 255))
         
         b2_bbox = draw.textbbox((0, 0), blessing_2, font=subhead_font)
         b2_width = b2_bbox[2] - b2_bbox[0]
         b2_x = (CARD_WIDTH - b2_width) // 2
-        b2_y = b1_y + 45
+        b2_y = b1_y + 42
         draw.text((b2_x + 1, b2_y + 1), blessing_2, font=subhead_font, fill=shadow_color)
         draw.text((b2_x, b2_y), blessing_2, font=subhead_font, fill=gold_color)
 
@@ -169,7 +181,7 @@ def generate_card():
             s_bbox = draw.textbbox((0, 0), sender_text, font=signature_font)
             s_width = s_bbox[2] - s_bbox[0]
             s_x = (CARD_WIDTH - s_width) // 2
-            s_y = panel_bottom + 40
+            s_y = panel_bottom + 45
             draw.text((s_x + 2, s_y + 2), sender_text, font=signature_font, fill=shadow_color)
             draw.text((s_x, s_y), sender_text, font=signature_font, fill=gold_color)
 
